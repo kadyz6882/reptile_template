@@ -12,13 +12,20 @@ import os
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, project_root)
 
-from src.config.settings import Settings, get_settings
-from src.core.scraper import SimpleScraper
-from src.core.parser import BeautifulSoupParser, ParselParser
-from src.data.storage import JSONStorage, CSVStorage
-from src.data.processors import DataCleaner, DataValidator
-from src.utils.validators import validate_url, validate_email
-from src.utils.formatters import format_size, format_duration
+# 确保能找到src模块
+try:
+    from src.config.settings import Settings, get_settings
+    from src.core.scraper import SimpleScraper
+    from src.core.parser import BeautifulSoupParser, ParselParser
+    from src.data.storage import JSONStorage, CSVStorage
+    from src.data.processors import DataCleaner, DataValidator
+    from src.utils.validators import validate_url, validate_email
+    from src.utils.formatters import format_size, format_duration
+except ImportError as e:
+    print(f"导入错误: {e}")
+    print(f"当前工作目录: {os.getcwd()}")
+    print(f"Python路径: {sys.path[:3]}")
+    raise
 
 
 class TestConfig(unittest.TestCase):

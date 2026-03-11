@@ -84,13 +84,24 @@ pip install -r requirements.txt
 - `beautifulsoup4>=4.12.0` - HTML解析
 - `loguru>=0.7.0` - 日志系统
 
-或使用pip安装（开发模式）：
+### 3. 验证安装
+
+运行测试确保一切正常：
 
 ```bash
-pip install -e .
+# 方法1: 使用测试脚本（推荐）
+python run_tests.py
+
+# 方法2: 直接运行测试
+python tests/test_basic.py
+
+# 方法3: 使用unittest模块
+python -m unittest tests.test_basic -v
 ```
 
-### 3. 配置环境变量
+如果看到 `🎉 所有测试通过！模板可以正常使用。` 说明安装成功。
+
+### 4. 配置环境变量
 
 复制环境变量示例文件并根据需要修改：
 
