@@ -136,10 +136,11 @@ data/
 *.sqlite
 *.sqlite3
 
-# 允许推送的示例数据文件
-!data/.gitkeep
-!data/examples/
-!data/schema/
+# 允许推送的文件
+!src/data/                    # 源代码中的data目录
+!data/.gitkeep               # 数据目录的gitkeep
+!data/examples/               # 示例数据文件
+!data/schema/                 # 数据库架构
 
 # 临时文件
 temp/
