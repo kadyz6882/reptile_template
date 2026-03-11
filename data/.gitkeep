@@ -1,0 +1,15 @@
+# This file keeps the data directory structure in version control
+# The data directory will contain database files and runtime data
+# 
+# Structure:
+# data/
+# ├── .gitkeep              # This file
+# ├── examples/              # Example data files
+# │   ├── sample_data.json   # Sample scraped data
+# │   └── test_data.csv      # Sample CSV data
+# ├── schema/                # Database schemas
+# │   ├── sqlite_schema.sql  # SQLite database schema
+# │   └── mysql_schema.sql   # MySQL database schema
+# └── runtime/               # Runtime database files (gitignored)
+#     ├── scraped_data.db    # SQLite database (created automatically)
+#     └── cache.db           # Cache database (created automatically)

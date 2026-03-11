@@ -136,6 +136,11 @@ data/
 *.sqlite
 *.sqlite3
 
+# 允许推送的示例数据文件
+!data/.gitkeep
+!data/examples/
+!data/schema/
+
 # 临时文件
 temp/
 tmp/

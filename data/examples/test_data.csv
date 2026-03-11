@@ -1,0 +1,4 @@
+url,title,content,scraped_at,status,response_time,size
+https://example.com/page1,Example Page 1,This is sample content for page 1,2024-03-12T00:00:00,success,1.23,1024
+https://example.com/page2,Example Page 2,This is sample content for page 2,2024-03-12T00:01:00,success,0.87,2048
+https://example.com/page3,Example Page 3,This is sample content for page 3,2024-03-12T00:02:00,failed,Connection timeout,,

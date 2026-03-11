@@ -1,0 +1,30 @@
+[
+  {
+    "url": "https://example.com/page1",
+    "title": "Example Page 1",
+    "content": "This is sample content for page 1",
+    "scraped_at": "2024-03-12T00:00:00",
+    "status": "success",
+    "response_time": 1.23,
+    "size": 1024
+  },
+  {
+    "url": "https://example.com/page2", 
+    "title": "Example Page 2",
+    "content": "This is sample content for page 2",
+    "scraped_at": "2024-03-12T00:01:00",
+    "status": "success",
+    "response_time": 0.87,
+    "size": 2048
+  },
+  {
+    "url": "https://example.com/page3",
+    "title": "Example Page 3", 
+    "content": "This is sample content for page 3",
+    "scraped_at": "2024-03-12T00:02:00",
+    "status": "failed",
+    "error": "Connection timeout",
+    "response_time": null,
+    "size": null
+  }
+]
