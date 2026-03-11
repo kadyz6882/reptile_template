@@ -7,10 +7,10 @@
 import asyncio
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.core import AsyncScraper, ParselParser
-from src.data import StorageManager, DataCleaner
+from src.data import JSONStorage, DataCleaner
 from src.loggers import get_logger
 
 
@@ -22,7 +22,7 @@ class AsyncExampleScraper(AsyncScraper):
         self.logger = get_logger("async_scraper").get_logger()
         self.parser = ParselParser()
         self.cleaner = DataCleaner()
-        self.storage = StorageManager()
+        self.storage = JSONStorage("output")
     
     async def parse(self, content):
         """解析网页内容"""

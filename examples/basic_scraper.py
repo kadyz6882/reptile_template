@@ -6,10 +6,10 @@
 
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.core import SimpleScraper, BeautifulSoupParser
-from src.data import StorageManager, DataCleaner
+from src.data import JSONStorage, DataCleaner
 from src.loggers import get_logger
 
 
@@ -21,7 +21,7 @@ class BasicExampleScraper(SimpleScraper):
         self.logger = get_logger("basic_scraper").get_logger()
         self.parser = BeautifulSoupParser()
         self.cleaner = DataCleaner()
-        self.storage = StorageManager()
+        self.storage = JSONStorage("output")
     
     def parse(self, response):
         """解析网页内容"""
@@ -66,7 +66,7 @@ def main():
         for i, result in enumerate(results):
             if 'error' not in result:
                 filename = f"basic_example_{i+1}"
-                if scraper.storage.save(result, filename):
+                if scraper.storage.save([result], filename):  # JSONStorage需要列表
                     success_count += 1
                     scraper.logger.info(f"成功保存: {filename}")
                 else:

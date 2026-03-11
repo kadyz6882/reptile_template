@@ -6,10 +6,10 @@
 
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.core import BaseScraper
-from src.data import StorageManager, DataValidator, DataEnricher
+from src.data import JSONStorage, DataValidator, DataEnricher
 from src.loggers import get_logger
 from src.utils import retry_on_failure
 
@@ -20,7 +20,7 @@ class NewsScraper(BaseScraper):
     def __init__(self):
         super().__init__()
         self.logger = get_logger("news_scraper").get_logger()
-        self.storage = StorageManager()
+        self.storage = JSONStorage("output")
         self.validator = DataValidator(required_fields=['title', 'url', 'content'])
         self.enricher = DataEnricher()
     

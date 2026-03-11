@@ -69,7 +69,7 @@ SCRAPER_TIMEOUT=60
 
 - `output/` - JSON/CSV文件输出
 - `logs/` - 日志文件
-- `data/` - 数据库文件（如果使用）
+- `data/runtime/` - 数据库文件（如果使用）
 
 ### Q: 如何更改输出目录？
 
@@ -81,6 +81,41 @@ from src.data import JSONStorage
 # 自定义输出目录
 storage = JSONStorage("/path/to/your/output")
 storage.save(data, "filename")
+```
+
+### Q: 如何使用示例数据？
+
+**A**: 加载示例数据进行测试：
+
+```python
+from src.data import JSONStorage
+
+# 加载示例数据
+example_storage = JSONStorage("data/examples")
+sample_data = example_storage.load("sample_data")
+print(f"示例数据: {len(sample_data)} 条")
+```
+
+### Q: 数据库文件在哪里？
+
+**A**: SQLite数据库文件在 `data/runtime/` 目录：
+
+```bash
+data/runtime/
+├── scraped_data.db    # 主数据库
+└── cache.db           # 缓存数据库
+```
+
+### Q: 如何初始化数据库架构？
+
+**A**: 使用提供的SQL文件：
+
+```bash
+# SQLite
+sqlite3 data/runtime/scraped_data.db < data/schema/sqlite_schema.sql
+
+# MySQL
+mysql -u username -p database_name < data/schema/mysql_schema.sql
 ```
 
 ## 🚀 性能问题

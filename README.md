@@ -48,14 +48,25 @@ reptile_template/
 │   └── loggers/           # 日志系统
 │       ├── __init__.py
 │       └── scraper_logger.py
+├── data/                  # 📊 数据目录
+│   ├── .gitkeep           # 保持目录在版本控制中
+│   ├── README.md          # 数据目录说明
+│   ├── examples/          # 示例数据文件
+│   │   ├── sample_data.json
+│   │   └── test_data.csv
+│   ├── schema/            # 数据库架构
+│   │   ├── sqlite_schema.sql
+│   │   └── mysql_schema.sql
+│   └── runtime/           # 运行时数据（gitignored）
 ├── examples/              # 示例代码
 │   ├── basic_scraper.py   # 基础爬虫示例
 │   ├── async_scraper.py   # 异步爬虫示例
 │   └── custom_scraper.py   # 自定义爬虫示例
 ├── tests/                 # 测试代码
 ├── docs/                  # 文档
-├── output/                # 输出目录
-├── logs/                  # 日志目录
+├── run_tests.py           # 测试运行脚本
+├── output/                # 输出目录（自动创建）
+├── logs/                  # 日志目录（自动创建）
 ├── requirements.txt       # 依赖列表
 ├── pyproject.toml        # 项目配置
 ├── .env.example          # 环境变量示例
@@ -223,6 +234,25 @@ validated_data = validator.process(data)
 # 数据增强
 enricher = DataEnricher()
 enriched_data = enricher.process(data)
+```
+
+### 数据存储
+
+```python
+from src.data import JSONStorage, CSVStorage, DatabaseStorage
+
+# 文件存储（自动创建 output/ 目录）
+json_storage = JSONStorage("output")
+csv_storage = CSVStorage("output")
+
+# 数据库存储（自动创建 data/runtime/ 目录）
+db_storage = DatabaseStorage("scraped_data")
+
+# 使用示例数据
+from src.data import JSONStorage
+example_storage = JSONStorage("data/examples")
+sample_data = example_storage.load("sample_data")
+print(f"加载了 {len(sample_data)} 条示例数据")
 ```
 
 ### 配置管理
