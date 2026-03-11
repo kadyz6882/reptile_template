@@ -10,13 +10,14 @@ import sys
 import os
 from typing import List
 
-# 添加src路径
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# 添加项目根目录到路径
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
 
-from core import SimpleScraper, AsyncScraper
-from data import StorageManager
-from config import get_settings
-from loggers import get_logger
+from src.core import SimpleScraper, AsyncScraper
+from src.data import StorageManager
+from src.config import get_settings
+from src.loggers import get_logger
 
 
 @click.group()
