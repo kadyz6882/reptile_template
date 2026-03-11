@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "reptile-template"
-version = "2.0.0"
-description = "A universal web scraping template - v2.0.0 with enhanced stability and compatibility"
+version = "3.0.0"
+description = "A universal web scraping template - v3.0.0 with complete documentation and enhanced features"
 authors = [{name = "kadyz6882", email = "kadhy2021120713@outlook.com"}]
 license = {text = "MIT"}
 readme = "README.md"

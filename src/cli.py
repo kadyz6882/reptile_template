@@ -21,7 +21,7 @@ from src.loggers import get_logger
 
 
 @click.group()
-@click.version_option(version="2.0.0")
+@click.version_option(version="3.0.0")
 def cli():
     """Reptile Template - 通用爬虫模板"""
     pass

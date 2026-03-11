@@ -3,7 +3,7 @@ Reptile Template - 通用爬虫模板
 一个功能完整、易于使用的Python爬虫项目模板
 """
 
-__version__ = "2.0.0"
+__version__ = "3.0.0"
 __author__ = "kadyz6882"
 __email__ = "kadhy2021120713@outlook.com"
 
