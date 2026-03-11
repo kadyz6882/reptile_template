@@ -42,6 +42,61 @@ def main():
         
         if result.wasSuccessful():
             print("\n🎉 所有测试通过！模板可以正常使用。")
+            
+            # 演示自动创建目录功能
+            print("\n🔧 演示自动目录创建功能...")
+            
+            try:
+                from src.data import JSONStorage
+                from src.loggers import get_logger
+                
+                # 演示数据存储和目录创建
+                print("📁 创建示例数据文件...")
+                storage = JSONStorage("output")
+                sample_data = [
+                    {
+                        "title": "示例数据",
+                        "url": "https://example.com",
+                        "content": "这是Reptile Template v3.0.0创建的示例数据",
+                        "created_at": "2024-03-12T00:00:00",
+                        "version": "3.0.0"
+                    }
+                ]
+                success = storage.save(sample_data, "demo_data")
+                if success and os.path.exists("output/demo_data.json"):
+                    print("✅ output目录已创建，示例数据已保存")
+                else:
+                    print("❌ 数据保存失败")
+                
+                # 演示日志系统
+                print("📝 创建示例日志...")
+                logger = get_logger("demo")
+                logger_instance = logger.get_logger()  # 获取实际的logger实例
+                logger_instance.info("Reptile Template v3.0.0 演示日志")
+                logger_instance.success("自动目录创建功能正常")
+                
+                if os.path.exists("logs"):
+                    print("✅ logs目录已创建，日志系统正常")
+                else:
+                    print("❌ 日志目录创建失败")
+                    
+                print("\n📊 生成的文件:")
+                if os.path.exists("output"):
+                    print("  📁 output/ - 数据输出目录")
+                    if os.path.exists("output/demo_data.json"):
+                        print("    📄 demo_data.json - 示例数据文件")
+                
+                if os.path.exists("logs"):
+                    print("  📁 logs/ - 日志目录")
+                    log_files = [f for f in os.listdir("logs") if f.endswith(".log")]
+                    for log_file in log_files:
+                        print(f"    📄 {log_file}")
+                
+                print("\n🎯 目录自动创建功能验证完成！")
+                
+            except Exception as e:
+                print(f"❌ 演示功能失败: {e}")
+            
             return 0
         else:
             print(f"\n❌ 测试失败: {len(result.failures)} 个失败, {len(result.errors)} 个错误")
